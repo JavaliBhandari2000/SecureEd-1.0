@@ -12,6 +12,26 @@ try {
 
     if($myusername==null)
     {throw new Exception("input did not exist");}
+    
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Validate username
+    if (!preg_match('/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/', $username)) {
+        die('Invalid email format');
+    }
+
+    // Validate password
+    if (!preg_match('/^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,16}$/', $password)) {
+        die('Password must be between 8 and 16 characters, and contain at least one capital letter and one number');
+    }
+
+    // If input validation passes, continue with login logic
+    // ...
+}
+
 
 
     $myusername = strtolower($myusername); //makes username noncase-sensitive
